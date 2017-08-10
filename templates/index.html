@@ -1,0 +1,55 @@
+<html>
+<head>
+  <title>Full Friends</title>
+  <style>
+      table{
+          border: 1px solid black;
+      }
+      thead, td{
+          border: 1px solid black;
+          padding: 5px;
+          padding-left: 25px;
+          padding-right: 25px;
+      }
+      thead th{
+          padding: 10px;
+          border: 1px solid black;
+          background-color: gray;
+      }
+  
+  </style>
+
+
+</head>
+<body>
+  
+    <h1>These are all my friends!</h1>
+    <!-- with all the data we can then construct a more structured output -->
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Friend Since</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for friend in full_friends: %}
+            <tr>
+                
+                <td>{{ friend['name'] }}</td>
+                <td>{{ friend['age'] }}</td>
+                <td>{{ friend["DATE_FORMAT(since,'%M %d %Y')"] }}</td>
+               
+            </tr>
+             {% endfor %}
+        </tbody>        
+    </table>
+   <h2>Add a Friend</h2>
+  <form action='/add_friends' method='POST'>
+    <label for="name">Name:<input type="text" name="name" id="name"></label>
+    <label for="age">Age:<input type="number" name="age" id="age"></label>
+    <input type="submit" value="Submit"> 
+  </form>
+</body>
+</html>
